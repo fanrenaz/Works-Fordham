@@ -120,7 +120,7 @@ def main():
 if __name__ == '__main__':
     #The following cookies should be collected manually
     cookies = ""
-    file_name = "shop1.csv"
+    file_name = "XIAOCHONG items.csv"
     # csv column names
     head = ['链接', '标题', '评论数', '价格', '销量', '图片链接', '品牌', '适用年龄', '尺码', '面料', '图案', '风格',
             '通勤', '领子', '衣门襟', '颜色分类', '袖型', '组合形式', '货号', '成分含量', '上市年份/季节',

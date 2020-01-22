@@ -5,6 +5,8 @@ import csv
 import random
 import re
 import time
+import urllib3
+urllib3.disable_warnings()
 
 def parameters(shopname):
     global url,header
@@ -12,11 +14,11 @@ def parameters(shopname):
     #'''Set your headers here'''
     header = {
             'accept': '*/*',
-            'accept-encoding': '*/*',
-            'accept-language': '*/*',
-            'cookie': '*/*',
-            'referer': '*/*',
-            "user-agent" : '*/*'
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'en-us',
+            'cookie': 'isg=BKKiGC6yCxXb8xeKYVsKEfbb-SwE86YNYJPsKOw7zpXAv0I51IP2HSg56yXmtB6l; _m_h5_tk=ef2dac56c3c3aa77a99945fa9ef38aac_1575514383191; _m_h5_tk_enc=b0cecd131168d93d14f237ae64ccd74d; _tb_token_=3e5b7e386335; cookie2=136f9022f492aee75e4ac382de4a4115; enc=X1e%2FTa6fXwEp8nx1ipRgLjp3Usw8jd%2F02URjS%2F8e0NsQsbWLKR7HAfVh26NFcyDUoLOaMm080v2ZTQmO9HHE8Q%3D%3D; hng=US%7Czh-CN%7CUSD%7C840; lgc=tb3759555_99; t=b3f472f034ecad985f6f12467e2d3bda; tracknick=tb3759555_99; uc3=id2=UoH%2B4N91JCmkPA%3D%3D&vt3=F8dByua%2BelJpqrx8JXA%3D&lg2=WqG3DMC9VAQiUQ%3D%3D&nk2=F5RGMcgaRhmUEHEz; uc4=nk4=0%40FY4NBLDSAOUBfM8ugnEq%2FH7np6TM78w%3D&id4=0%40UOnhBNzvyt9FV0Dnkk515WxXCFPg; cna=8msyFs+85WICAWwdmaO+OJBj',
+            'referer': 'https://uniqlo.m.tmall.com/shop/shop_auction_search.htm?spm=a2141.7631565.0.0.5af8683ajNUqSY&suid=196993935&sort=default',
+            "user-agent" : 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/78.0.3904.84 Mobile/15E148 Safari/604.1'
             } 
 
 def create_csv(filename):
@@ -54,8 +56,10 @@ def main(filename):
         get_products(i,filename)
         print('There are {} pages totally，now the {} page is extracting'.format(totalpage,i))
         time.sleep(5+random.random())
+        if i in range(1,90,5):
+            time.sleep(5+random.random())
 
 if __name__ == '__main__':
     parameters("uniqlo")
-    create_csv("uniqlo.csv")
-    main("uniqlo.csv")
+    create_csv("uniqlo_20191229_3am.csv")
+    main("uniqlo_20191229_3am.csv")

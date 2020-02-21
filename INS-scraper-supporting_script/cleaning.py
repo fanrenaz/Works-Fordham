@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Feb 20 23:22:30 2020
-
-@author: Yifan Ren
-"""
-
 import json
 import pandas as pd
 import math

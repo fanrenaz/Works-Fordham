@@ -38,7 +38,7 @@ def json_to_df(file):
 def save_csv(df, to_path, focus_only=False):
     if focus_only == False:
         return df.to_csv(to_path,encoding="utf_8_sig",index=False)
-    elif focus_only == True:
+    elif focus_only == True:#only keep focal points: like# and comment#. And normalize them.
         df = df[["edge_liked_by","edge_media_to_comment","taken_at_timestamp"]]
         df["utcdate"] = pd.to_datetime(df["taken_at_timestamp"].values, utc=True,unit='s').to_period("D")
         x = df.set_index("utcdate").drop(columns="taken_at_timestamp").values #returns a numpy array
@@ -63,7 +63,7 @@ def process_js_csv(name):
         print("Failed in {}".format(name))
 
 if __name__ == "__main__":
-    ls = ['gs://fashionaiins/baggypants/']#use your own names list to deal with
+    ls = ['gs://egbucket/hashtag1/']#use your own names list to deal with
     save_pool = ThreadPool()
     save_pool.map(process_js_csv, get_names(ls))
     save_pool.close()
